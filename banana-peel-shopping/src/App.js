@@ -25,6 +25,7 @@ function App() {
         <div className='nav-container'>
           <img className='logo' src={logo} alt='logo'></img>
           <Types types={types} filterItems={filterItems} />
+          <button className='cart'>Cart</button>
         </div>
       </section>  
       <section className="products-container">
