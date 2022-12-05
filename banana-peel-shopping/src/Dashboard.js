@@ -86,7 +86,7 @@ const Products = ({ flopItems, setCurrID, setShowItemDetail }) => {
   return (
     <div className="products-section">
       {flopItems.map((flopItem) => {
-        const { id, title, img, price, desc } = flopItem;
+        const { id, title, img, price } = flopItem;
         return (
           <article key={id} className="product-item" onMouseOver={()=>setIsHovered(true)} onMouseLeave={()=>setIsHovered(false)}>
             <div>
