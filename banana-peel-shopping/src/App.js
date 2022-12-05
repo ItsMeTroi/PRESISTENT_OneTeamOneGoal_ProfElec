@@ -67,6 +67,9 @@ const Products = ({ flopItems }) => {
                 <h4 className="price">$15</h4>
               </header>
               <p className="item-text">{desc}</p>
+              <button className='item-detail'>
+                BUY NOW
+              </button>
             </div>
           </article>
         );
