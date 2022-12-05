@@ -8,6 +8,7 @@ const allTypes = ['all', ...new Set(flops.map((flop) => flop.type))];
 function App() {
   const [flopItems, setFlopItems] = useState(flops);
   const [types, setTypes] = useState(allTypes);
+  const [isHovered, setIsHovered] = useState(false);
 
   const filterItems = (type) => {
     if (type === 'all') {
@@ -29,7 +30,7 @@ function App() {
         </div>
       </section>  
       <section className="products-container">
-        <Products flopItems={flopItems} />
+        <Products flopItems={flopItems} isHovered={isHovered} setIsHovered={setIsHovered}/>
       </section>
     </main>
   );
@@ -54,21 +55,23 @@ const Types = ({ types, filterItems }) => {
   );
 };
 
-const Products = ({ flopItems }) => {
+const Products = ({ flopItems, isHovered, setIsHovered }) => {
   return (
     <div className="products-section">
       {flopItems.map((flopItem) => {
         const { id, title, img, desc } = flopItem;
         return (
-          <article key={id} className="product-item">
+          <article key={id} className="product-item" onMouseOver={()=>setIsHovered(true)} onMouseLeave={()=>setIsHovered(false)}>
+            <div>
             <img src={img} alt={title} className="item-img" />
             <div className="item-info">
               <header>
                 <h4>{title}</h4>
                 <h4 className="price">$15</h4>
               </header>
-              <p className="item-text">{desc}</p>
-              <button className='item-detail'>
+              {/* <p className="item-text">{desc}</p> */}
+            </div>
+            <button className= {`item-button-${isHovered}`}>
                 BUY NOW
               </button>
             </div>
