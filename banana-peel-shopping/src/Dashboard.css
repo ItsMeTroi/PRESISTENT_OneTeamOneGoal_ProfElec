@@ -1,30 +1,20 @@
-.App {
-  text-align: center;
+:root {
+  --brand-color: #ffb701;
 }
-
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-} */
-
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
 
 .nav-bar {
-  background-color: #FFF6BF;
-  min-height: 15vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position: fixed;
+  background-color: #f3f3f3;
   font-size: calc(10px + 2vmin);
   color: black;
+  width: 100%;
+  padding: 10px 0px;
+
+  border-bottom: 1px solid;
 }
+
 .products-container {
-  background-color: red;
+  background-color: #fff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -33,65 +23,94 @@
   font-size: calc(10px + 2vmin);
   color: black;
 }
-.nav-bar{
+/* .nav-bar{
   display: flex;
   align-items: flex-start;
 }
 .nav-container{
   display: flex;
   flex: row;
+} */
+
+.btn-container {
+  position: absolute;
+  right: 0px;
+  display: inline-block;
 }
 
-.btn-container{
-  display:flex;
+.filter-btn:hover, #cart:hover {
+  color: var(--brand-color);
+  transition: 0.2s;
 }
 
-.products-section{
+.btn-categories {
+  margin-right: 70px;
+  top: 15px;
+}
+
+.filter-btn {
+  transition: 0.5s;
+  margin: 0px 20px;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#cart {
+  transition: 0.5s;
+  top: 8px;
+  margin-right: 30px;
+  position: relative;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.products-section {
   margin: 10vh;
   text-transform: capitalize;
   display: grid;
-  background-color: #FFF6BF;
+  background-color: #fff6bf;
   padding: 12px;
   grid-template-columns: auto auto;
   align-items: center;
 }
-.product-item{
+.product-item {
   display: flex;
   flex: row;
   overflow: hidden;
   max-width: 40 vw;
   text-overflow: ellipsis;
-  background-color: #A5F1E9;
+  background-color: #a5f1e9;
   padding: 22px;
   margin: 22px;
   font-size: 12pt;
 }
-.item-img{
+.item-img {
   height: 25vh;
   width: 25vh;
   padding-right: 10px;
 }
 
-.product-item:hover{
+.product-item:hover {
   outline: brown solid 3px;
   height: 300px;
-
-} 
-
-.logo{
-  width: 15vh;
-
 }
 
-/* .App-link {
-  color: #61dafb;
-} */
-
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+.logo {
+  left: 40px;
+  width: 10em;
+  position: relative;
+}

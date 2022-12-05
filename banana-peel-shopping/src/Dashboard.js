@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import flops from './data';
 import './Dashboard.css';
-import logo from './assets/bananapeel-loaders.png';
+import logo from './assets/logo-bp.png';
+import { FaShoppingCart } from 'react-icons/fa';
 
-const allTypes = ['all', ...new Set(flops.map((flop) => flop.type))];
+const allTypes = ['ALL', ...new Set(flops.map((flop) => flop.type))];
 
 function Dashboard() {
   const [flopItems, setFlopItems] = useState(flops);
@@ -12,7 +13,7 @@ function Dashboard() {
   const [types, setTypes] = useState(allTypes);
 
   const filterItems = (type) => {
-    if (type === 'all') {
+    if (type === 'ALL') {
       setFlopItems(flops);
       return;
     }
@@ -27,7 +28,9 @@ function Dashboard() {
         <div className='nav-container'>
           <img className='logo' src={logo} alt='logo'></img>
           <Types types={types} filterItems={filterItems} />
-          <button className='cart'>Cart</button>
+          <div className='btn-container'>
+          <button className='cart menu-btn' id='cart'><FaShoppingCart/></button>
+          </div>
         </div>
       </section>  
 
@@ -58,7 +61,7 @@ function Dashboard() {
 
 const Types = ({ types, filterItems }) => {
   return (
-    <div className="btn-container">
+    <div className="btn-container btn-categories menu-btn">
       {types.map((type, index) => {
         return (
           <button
@@ -99,7 +102,7 @@ const Products = ({ flopItems, setCurrID, setShowItemDetail }) => {
               {/* <p className="item-text">{desc}</p> */}
             </div>
             {
-              isHovered && <button className= 'item-button' onClick={()=>{setCurrID(id-1); setShowItemDetail(true);}}> BUY NOW </button>
+              isHovered && <button className= 'item-button' onClick={()=>{setCurrID(id-1); setShowItemDetail(true);}}> Quick Look </button>
             }
             </div>
           </article>
