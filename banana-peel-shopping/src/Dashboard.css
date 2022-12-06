@@ -105,6 +105,11 @@
   align-items: center;
 }
 
+.lightbox{
+  z-index: 99;
+  position: relative;
+}
+
 
 .product-item {
   display: flex;
@@ -112,7 +117,7 @@
   overflow: hidden;
   max-width: 40 vw;
   text-overflow: ellipsis;
-  background-color: #18506d;
+  background-color: #18506e;
   padding: 22px;
   margin: 22px;
   font-size: 12pt;
