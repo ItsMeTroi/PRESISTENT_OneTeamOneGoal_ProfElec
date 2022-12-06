@@ -2,9 +2,13 @@ import React, { useRef, useState } from "react";
 import flops from "./data";
 import "./Dashboard.css";
 import logo from "./assets/logo-bp.png";
+import logoWhite from "./assets/logo-bp-white3.png";
+import { FaShoppingCart } from "react-icons/fa";
+import { MdOutlineClose } from "react-icons/md";
+
 // import Cart from './Cart';
 
-const allTypes = ["all", ...new Set(flops.map((flop) => flop.type))];
+const allTypes = ["ALL", ...new Set(flops.map((flop) => flop.type))];
 
 const Dashboard = () => {
   const [flopItems, setFlopItems] = useState(flops);
@@ -17,7 +21,7 @@ const Dashboard = () => {
   const count = useRef();
 
   const filterItems = (type) => {
-    if (type === "all") {
+    if (type === "ALL") {
       setFlopItems(flops);
       return;
     }
@@ -46,67 +50,75 @@ const Dashboard = () => {
         <div className="nav-container">
           <img className="logo" src={logo} alt="logo"></img>
           <Types types={types} filterItems={filterItems} />
-          <button className="cart" data-testid="cart-btn">
-            Cart
+          <button className="cart cart-btn" data-testid="cart-btn">
+            <FaShoppingCart />
           </button>
         </div>
       </section>
 
       {showItemDetail && (
-        <div className="lightbox">
-          <button
-            className="exitItem"
-            onClick={() => {
-              setQty(0);
-              setShowItemDetail(false);
-            }}
-          >
-            X
-          </button>
-          <img
-            src={flopItems[currID].img}
-            alt={flopItems[currID].title}
-            className="item-img"
-          />
-          <div className="item-info">
-            <header>
-              <h4>{flopItems[currID].title}</h4>
-              <h4 className="price">Unit Price: ${flopItems[currID].price}</h4>
-              <h4 className="price">
-                Subtotal: ${flopItems[currID].price * qty}
-              </h4>
-              <h4 className="price">
-                Total: ${flopItems[currID].price * flopItems[currID].qty}
-              </h4>
-            </header>
-            <p className="item-text">{flopItems[currID].desc}</p>
-            <h4>Current item: {flopItems[currID].qty}</h4>
+        <div className="lightbox-overlay">
+          <div className="lightbox">
             <button
-              className="decItem"
-              onClick={() => setQty(qty > 0 ? qty - 1 : 0)}
-            >
-              -
-            </button>
-            <input
-              type="text"
-              className="itemQty"
-              value={qty}
-              ref={count}
-              onChange={() => {
-                //to be worked on, needs to set placeholder to 0 automatically
-                setQty(parseInt(count.current.value));
+              className="exitItem"
+              onClick={() => {
+                setQty(0);
+                setShowItemDetail(false);
               }}
-            />
-            <button className="addItem" onClick={() => setQty(qty + 1)}>
-              +
-            </button>
-            <button
-              className="buyItem"
-              onClick={addCartItems}
-              data-testid="buy-btn"
             >
-              Buy
+              <MdOutlineClose />
             </button>
+            <img
+              src={flopItems[currID].img}
+              alt={flopItems[currID].title}
+              className="item-img slipper-img"
+            />
+            <div className="item-info">
+              <header>
+                <h4>{flopItems[currID].title}</h4>
+                <h4 className="price">
+                  Unit Price: ${flopItems[currID].price}
+                </h4>
+                <h4 className="price">
+                  Subtotal: $
+                  {Number((flopItems[currID].price * qty).toFixed(2))}
+                </h4>
+                <h4 className="price">
+                  Total: $
+                  {Number(
+                    (flopItems[currID].price * flopItems[currID].qty).toFixed(2)
+                  )}
+                </h4>
+              </header>
+              <p className="item-text desc">{flopItems[currID].desc}</p>
+              <h4>Current item: {flopItems[currID].qty}</h4>
+              <button
+                className="decItem"
+                onClick={() => setQty(qty > 0 ? qty - 1 : 0)}
+              >
+                -
+              </button>
+              <input
+                type="text"
+                className="itemQty"
+                value={qty}
+                ref={count}
+                onChange={() => {
+                  //to be worked on, needs to set placeholder to 0 automatically
+                  setQty(parseInt(count.current.value));
+                }}
+              />
+              <button className="addItem" onClick={() => setQty(qty + 1)}>
+                +
+              </button>
+              <button
+                className="buyItem"
+                onClick={addCartItems}
+                data-testid="buy-btn"
+              >
+                Buy
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -123,6 +135,17 @@ const Dashboard = () => {
           setShowItemDetail={setShowItemDetail}
         />
       </section>
+
+      <footer className="footer-container">
+        <div className="footer-main">
+          
+          <img className="logo footer-logo" src={logoWhite} alt="logo"></img>
+          <p id='bp-slogan'>Create your path!</p>
+        </div>
+        <div className="footer-copyright">
+          <p>&copy; Copyright 2022 | ProfElec11076 | PERSISTENT_OneTeamOneGoal</p>
+        </div>
+      </footer>
     </main>
   );
 };
