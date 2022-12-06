@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import flops from './data';
 import './Dashboard.css';
-import logo from './assets/logo-bp.png';
-import { FaShoppingCart } from 'react-icons/fa';
+import logo from './assets/bananapeel-loaders.png';
+// import Cart from './Cart';
 
-const allTypes = ['ALL', ...new Set(flops.map((flop) => flop.type))];
+const allTypes = ['all', ...new Set(flops.map((flop) => flop.type))];
 
-function Dashboard() {
+const Dashboard = () => {
   const [flopItems, setFlopItems] = useState(flops);
   const [showItemDetail, setShowItemDetail] = useState(false);
   const [currID, setCurrID] = useState(0);
   const [types, setTypes] = useState(allTypes);
+  const [cartItems, setCartItems] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+  const [qty, setQty] = useState(0);
+  const count = useRef();
 
   const filterItems = (type) => {
-    if (type === 'ALL') {
+    if (type === 'all') {
       setFlopItems(flops);
       return;
     }
@@ -21,6 +25,20 @@ function Dashboard() {
     setFlopItems(newItems);
   };
 
+  const addCartItems = () => {
+    flopItems[currID].qty = flopItems[currID].qty + qty;
+    
+    cartItems.map((item) => item.id === flopItems[currID].id ?  flopItems[currID].status = true : flopItems[currID].status);
+    console.log(flopItems[currID].status);
+    flopItems[currID].qty !== 0 && !flopItems[currID].status ?
+    setCartItems([
+      ...cartItems,
+      flopItems[currID]
+    ] 
+    ):
+    setCartItems([...cartItems]); 
+  }
+  console.log(cartItems);
 
   return (
     <main>
@@ -28,26 +46,45 @@ function Dashboard() {
         <div className='nav-container'>
           <img className='logo' src={logo} alt='logo'></img>
           <Types types={types} filterItems={filterItems} />
-          <div className='btn-container'>
-          <button className='cart menu-btn' id='cart'><FaShoppingCart/></button>
-          </div>
+          <button className='cart'>Cart</button>
         </div>
       </section>  
 
       { showItemDetail &&
 
           <div>
+            <button className='exitItem' onClick={()=>{
+              setQty(0);
+            }}>
+            X
+            </button>
             <img src={flopItems[currID].img} alt={flopItems[currID].title} className="item-img" />
             <div className="item-info">
                 <header>
                 <h4>{flopItems[currID].title}</h4>
-                <h4 className="price">${flopItems[currID].price}</h4>
+                <h4 className="price">Unit Price: ${flopItems[currID].price}</h4>
+                <h4 className="price">Subtotal: ${flopItems[currID].price * qty}</h4>
+                <h4 className="price">Total: ${flopItems[currID].price * flopItems[currID].qty}</h4>
                 </header>
                 <p className="item-text">{flopItems[currID].desc}</p>
+                <h4>Current item: {flopItems[currID].qty}</h4>
+                <button className='decItem' onClick={()=>setQty(qty > 0 ? qty-1 : 0)}>-</button>       
+                <input type='text' className='itemQty' value={qty} ref={count} 
+                  onChange={()=> {
+                    //to be worked on, needs to set placeholder to 0 automatically
+                    setQty(parseInt(count.current.value));
+                  }
+                } />
+                <button className='addItem' onClick={()=>setQty(qty+1)}>+</button>
+                <button className='buyItem' onClick={addCartItems}>BUY</button>
             </div>
           </div>
       }
 
+      {/* {
+        showCart &&
+        <Cart cartItems={cartItems} setCartItems={setCartItems}/>
+      } */}
 
       <section className="products-container">
         <Products flopItems={flopItems} setCurrID={setCurrID} setShowItemDetail={setShowItemDetail}/>
@@ -61,7 +98,7 @@ function Dashboard() {
 
 const Types = ({ types, filterItems }) => {
   return (
-    <div className="btn-container btn-categories menu-btn">
+    <div className="btn-container">
       {types.map((type, index) => {
         return (
           <button
@@ -91,7 +128,7 @@ const Products = ({ flopItems, setCurrID, setShowItemDetail }) => {
       {flopItems.map((flopItem) => {
         const { id, title, img, price } = flopItem;
         return (
-          <article key={id} className="product-item" onMouseOver={()=>setIsHovered(true)} onMouseLeave={()=>setIsHovered(false)}>
+          <article key={id} id={`${id}`} className="product-item" onMouseOver={()=>setIsHovered(true)} onMouseLeave={()=>setIsHovered(false)}>
             <div>
             <img src={img} alt={title} className="item-img" />
             <div className="item-info">
@@ -102,7 +139,7 @@ const Products = ({ flopItems, setCurrID, setShowItemDetail }) => {
               {/* <p className="item-text">{desc}</p> */}
             </div>
             {
-              isHovered && <button className= 'item-button' onClick={()=>{setCurrID(id-1); setShowItemDetail(true);}}> Quick Look </button>
+              isHovered && <button className= 'item-button' onClick={()=>{setCurrID(id-1); setShowItemDetail(true);}}> BUY NOW </button>
             }
             </div>
           </article>
