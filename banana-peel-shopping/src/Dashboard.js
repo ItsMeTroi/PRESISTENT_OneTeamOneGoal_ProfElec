@@ -46,7 +46,7 @@ const Dashboard = () => {
         <div className='nav-container'>
           <img className='logo' src={logo} alt='logo'></img>
           <Types types={types} filterItems={filterItems} />
-          <button className='cart'>Cart</button>
+          <button className='cart' data-testid="cart-btn">Cart</button>
         </div>
       </section>  
 
@@ -76,7 +76,7 @@ const Dashboard = () => {
                   }
                 } />
                 <button className='addItem' onClick={()=>setQty(qty+1)}>+</button>
-                <button className='buyItem' onClick={addCartItems}>BUY</button>
+                <button className='buyItem' onClick={addCartItems} data-testid="buy-btn">BUY</button>
             </div>
           </div>
       }
