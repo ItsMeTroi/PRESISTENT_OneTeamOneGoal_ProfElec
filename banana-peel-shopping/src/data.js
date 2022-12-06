@@ -7,7 +7,7 @@ const flops = [
     {
       id: 1,
       title: 'yonder - dispotic',
-      type: 'mens',
+      type: 'MEN',
       price: 15.99,
       img: menFlops,
       desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
@@ -15,7 +15,7 @@ const flops = [
     {
       id: 2,
       title: 'bohemian dreams - light red',
-      type: 'womens',
+      type: 'WOMEN',
       price: 13.99,
       img: womenFlops,
       desc: `vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats `,
@@ -23,7 +23,7 @@ const flops = [
     {
       id: 3,
       title: 'hopscotch - pool blue',
-      type: 'kids',
+      type: 'KIDS',
       price: 6.99,
       img: child1Flops,
       desc: `ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
@@ -31,7 +31,7 @@ const flops = [
     {
       id: 4,
       title: 'portobello - beary cute',
-      type: 'kids',
+      type: 'KIDS',
       price: 20.99,
       img: child2Flops,
       desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut, `,
