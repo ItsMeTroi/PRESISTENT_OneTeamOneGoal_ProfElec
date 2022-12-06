@@ -173,11 +173,12 @@
 
 .product-item {
   flex: row;
-  max-width: 40 vw;
+  width: 12em;
+  height: -webkit-fill-available;
   text-overflow: ellipsis;
   background-color: #fff;
-  padding: 22px;
-  margin: 22px;
+  padding: 20px;
+  margin: 10px;
   font-size: 12pt;
 }
 
