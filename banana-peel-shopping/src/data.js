@@ -36,5 +36,13 @@ const flops = [
       img: child2Flops,
       desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut, `,
     },
+    {
+      id: 5,
+      title: 'portobello - beary cute',
+      type: 'KIDS',
+      price: 20.99,
+      img: child2Flops,
+      desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut, `,
+    },
   ];
   export default flops;

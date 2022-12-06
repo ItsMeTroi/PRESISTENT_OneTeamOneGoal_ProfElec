@@ -4,7 +4,7 @@
 
 .nav-bar {
   position: fixed;
-  background-color: #f3f3f3;
+  background-color: #fff;
   font-size: calc(10px + 2vmin);
   color: black;
   width: 100%;
@@ -14,7 +14,7 @@
 }
 
 .products-container {
-  background-color: #fff;
+  background-color: #f7f5f8;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -82,11 +82,12 @@
   margin: 10vh;
   text-transform: capitalize;
   display: grid;
-  background-color: #fff6bf;
   padding: 12px;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto auto;
   align-items: center;
 }
+
+
 .product-item {
   display: flex;
   flex: row;
