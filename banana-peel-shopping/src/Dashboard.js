@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import flops from './data';
 import './Dashboard.css';
-import logo from './assets/bananapeel-loaders.png';
+import logo from './assets/logo-bp.png';
 // import Cart from './Cart';
 
 const allTypes = ['all', ...new Set(flops.map((flop) => flop.type))];
