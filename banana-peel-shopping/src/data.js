@@ -17,7 +17,7 @@ const flops = [
     },
     {
       id: 2,
-      title: 'bohemian dreams - light red',
+      title: 'bohemian dreams - red',
       status:false,
       type: 'WOMEN',
       price: 13.99,
