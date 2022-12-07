@@ -142,6 +142,7 @@ const Dashboard = () => {
           <img className="logo footer-logo" src={logoWhite} alt="logo"></img>
           <p id='bp-slogan'>Create your path!</p>
         </div>
+        <hr/>
         <div className="footer-copyright">
           <p>&copy; Copyright 2022 | ProfElec11076 | PERSISTENT_OneTeamOneGoal</p>
         </div>
